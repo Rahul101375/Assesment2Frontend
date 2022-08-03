@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Dialog with elements</h1>
+<div mat-dialog-content>
+    <form [formGroup]="dialogForm" (ngSubmit)="onUpdate()">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Name" formControlName="userName">
+              <mat-error *ngIf="checkError('userName', 'required')"> Name is required</mat-error>
+            </mat-form-field>
+        
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Email" formControlName="email">
+                <mat-error *ngIf="checkError('email', 'required')"> Email is required</mat-error>
+              </mat-form-field>
+        
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Contact" formControlName="contact">
+                <mat-error *ngIf="checkError('contact', 'required')"> Contact is required</mat-error>
+                
+              </mat-form-field>
+        
+              <mat-form-field class="example-full-width">
+              <mat-select  formControlName="status" placeholder="select">
+                <mat-option [value]="gradeArray" *ngFor="let gradeArray of statusArray">{{gradeArray}}
+                </mat-option>
+             </mat-select>
+            </mat-form-field>
+              <div class="button-wrapper" >
+                <button mat-flat-button style="padding:0px 5px;margin:0px 10px ;" color="primary" type="submit" [disabled]="!dialogForm.valid">Update</button>
+                <button mat-flat-button color="primary" [disabled]="!dialogForm.valid" (click)="reset()">Cancel</button>
+              </div>
+        </form>
+</div>

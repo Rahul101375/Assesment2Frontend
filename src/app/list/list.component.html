@@ -1,0 +1,26 @@
+<div style="text-align:center ; margin: 50px;">
+    <h2> Details List</h2></div>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>User name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of allData let i=index">
+                <td>{{i+1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.contact}}</td>
+                <td>{{item.status=="1"?"Active":"Inactive"}}</td>
+                <td><span (click)="edit(item.Id)"><mat-icon>edit</mat-icon></span> <span (click)="delete(item.Id)"><mat-icon>cancel</mat-icon></span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

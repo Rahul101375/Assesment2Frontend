@@ -1,0 +1,32 @@
+<div class="main">
+    <div style="text-align: center;padding:10px"><b>Create Records</b></div>
+    <form [formGroup]="myForm"  novalidate (ngSubmit)="onSubmit()">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Name" formControlName="userName">
+          <mat-error *ngIf="checkError('userName', 'required')"> Name is required</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="checkError('email', 'required')"> Email is required</mat-error>
+          </mat-form-field>
+    
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Contact" formControlName="contact">
+            <mat-error *ngIf="checkError('contact', 'required')"> Contact is required</mat-error>
+            
+          </mat-form-field>
+    
+          <mat-form-field class="example-full-width">
+          <mat-select  formControlName="status" placeholder="select">
+            <mat-option [value]="gradeArray" *ngFor="let gradeArray of statusArray">{{gradeArray}}
+            </mat-option>
+         </mat-select>
+        </mat-form-field>
+          <div class="button-wrapper" >
+            <button mat-flat-button style="padding:0px 5px;margin:0px 10px ;" color="primary" type="submit" [disabled]="!myForm.valid">Submit</button>
+            <button mat-flat-button color="primary" [disabled]="!myForm.valid" (click)="reset()">Reset</button>
+          </div>
+      </form>
+</div>
+
